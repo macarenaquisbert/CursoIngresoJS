@@ -10,5 +10,73 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  */
 function CalcularPrecio () 
 {
- 	
-}
+     let importeFinal;
+     let cantida; 
+     let Marca; 
+     let precioConDescuento;
+     let descuento; 
+     let IIBB; 
+     const PRECIO = 35;
+    
+     cantida = parseInt(document.getElementById("txtIdCantidad").value);
+     Marca = document.getElementById("Marca").value; 
+
+//--------------valor del descuento--------
+     switch (cantida) {
+        case 1:
+        case 2:
+            descuento = 0;
+             break;
+        case 3:
+        if (Marca =="ArgentinaLuz" ) {
+            descuento = 15;
+
+        } else if ( Marca == "FelipeLamparas" ) {
+            descuento = 10;
+        } else{
+            descuento = 5; 
+        }
+            break;
+        case 4:
+        if (Marca == "ArgentinaLuz" || Marca == "FelipeLuz") {
+            descuento = 25;
+        } else {
+            descuento =20;
+        }    
+        break;
+        case 5:
+            if (Marca == "ArgentinaLuz") {
+                descuento = 40;
+            } else {
+                descuento = 30;
+            }
+        break;
+
+         default:
+         descuento = 50;    
+     }
+//----------------------------------------------------
+
+     precioConDescuento = PRECIO -( PRECIO * descuento / 100);
+     //precio con desc.
+     document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
+     
+     importeFinal = precioConDescuento * cantida;
+
+     if (importeFinal > 120) {
+         //IIBB
+         IIBB = importeFinal *10/100;
+         importeFinal += IIBB;
+
+     } else {
+         alert("Impote a pagar : $ " + importeFinal);
+     }
+
+    }
+
+
+    /*
+    tarea hacer if el descuento;
+    
+    
+    */
